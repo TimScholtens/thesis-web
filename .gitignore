@@ -9,6 +9,13 @@ instance/
 .coverage
 htmlcov/
 node_modules
+.cache
+.idea
 dist/
 build/
 *.egg-info/
+.cache/f2/5fe3d8325a2fceca6942e0f7e0ad44.json
+.cache/bb/aff36a6e0168e29f442597c894887c.json
+.cache/64/e398a3ad333b987471a29ab8b00392.json
+.cache/3f/0d16551f73b6d005147f3b7643ee6e.json
+.cache/09/118b16d5fd3083579f2b1ebb2e6c61.json
