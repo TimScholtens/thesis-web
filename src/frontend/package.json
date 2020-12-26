@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node_modules/.bin/parcel ./frontend/index.html",
-    "prod": "node_modules/.bin/parcel build ./frontend/index.html --out-dir src/backend/dist"
+    "start": "node_modules/.bin/parcel index.html",
+    "prod": "node_modules/.bin/parcel build index.html --out-dir ../backend/dist"
   },
   "author": "",
   "license": "ISC",
