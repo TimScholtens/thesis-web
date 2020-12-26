@@ -1,6 +1,6 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
-import {START_COORDINATES, START_ZOOM, MIN_ZOOM} from './config.js'
+import {START_COORDINATES, START_ZOOM, MIN_ZOOM, HOST} from './config.js'
 
 
 function init(){
@@ -22,10 +22,14 @@ function init(){
 
 function loadNeighbourhoods(map){
 
-	// Fetch?
+	fetch(`${HOST}/api/geojson/provinces`)
+		.then(resp => resp.json())
+		.then(data => JSON.parse(data))
+		// .then(json => console.log(json))
+		.then(json => L.geoJSON(json).addTo(map))
+		// .then(data => console.log(data))
 
-	console.log(provinces)
-	L.geoJSON(provinces)
+
 }
 
 
@@ -35,4 +39,4 @@ function getSelectedNeighbourhoods(){
 
 let map = init()
 
-// loadNeighbourhoods(map)
+loadNeighbourhoods(map)

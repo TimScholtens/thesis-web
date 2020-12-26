@@ -27,8 +27,6 @@ function getVariables() {
             }
         )
 
-    console.log(variables)
-
 }
 
 function setUIVariables() {

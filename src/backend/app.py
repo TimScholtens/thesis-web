@@ -1,6 +1,7 @@
 from config import app, STATIC_FOLDER_API
 from flask import send_file, jsonify
-from controller.geojson import get_provices
+from controller.geojson import get_provinces
+
 
 @app.route('/')
 def home():
@@ -17,10 +18,11 @@ def variables():
 
 @app.route('/api/geojson/provinces')
 def provinces():
-    # with open(STATIC_FOLDER_API / 'geojson' / 'provinces.json') as f:
-    with open(STATIC_FOLDER_API / 'geojson' / 'provinces - subset.json') as f:
+    list_provinces = get_provinces()
+    resp = jsonify(list_provinces)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
 
-        return jsonify(f.read())
+    return resp
 
 
 if __name__ == '__main__':
