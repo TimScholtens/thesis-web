@@ -1,7 +1,7 @@
 from config import app, STATIC_FOLDER_API
 from flask import send_file, jsonify
 from controller.geojson import get_provinces
-
+from controller.variables import get_variables
 
 @app.route('/')
 def home():
@@ -10,7 +10,7 @@ def home():
 
 @app.route('/api/variables')
 def variables():
-    resp = jsonify(variables=['son', 'en', 'breugel'])
+    resp = jsonify(variables=get_variables())
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp

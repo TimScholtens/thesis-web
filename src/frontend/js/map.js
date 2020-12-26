@@ -7,8 +7,15 @@ let selectedFeatureSet = new Set()
 
 
 function init() {
+    // Initialize map
     let map = L.map('map').setView([START_COORDINATES['lat'], START_COORDINATES['long']], START_ZOOM);
 
+    // TODO; Prevent ContextMenu
+    // let mapElement = document.getElementById('map')
+    // let mapElement = document.querySelector('body')
+    // mapElement.addEventListener('contextmenu', () => {return false;})
+
+    // Add tile layer
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         minZoom: MIN_ZOOM,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
