@@ -1,6 +1,6 @@
 from config import app, STATIC_FOLDER_API
 from flask import send_file, jsonify
-
+from controller.geojson import get_provices
 
 @app.route('/')
 def home():
