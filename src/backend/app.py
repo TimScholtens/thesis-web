@@ -17,9 +17,11 @@ def variables():
 
 @app.route('/api/geojson/provinces')
 def provinces():
-    with open(STATIC_FOLDER_API / 'geojson' / '')
-    pass
+    # with open(STATIC_FOLDER_API / 'geojson' / 'provinces.json') as f:
+    with open(STATIC_FOLDER_API / 'geojson' / 'provinces - subset.json') as f:
+
+        return jsonify(f.read())
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

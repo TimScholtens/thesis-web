@@ -1,12 +1,7 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import {START_COORDINATES, START_ZOOM, MIN_ZOOM} from './config.js'
-// import * as neighbourhood_polygons from '../geojson/neighbourhoods.json'
-// import {provinces} from '../geojson/provinces.js'
-import '../../geojson/provinces'
 
-
-// let provinces = parcelRequire('../geojson/provinces.js')
 
 function init(){
 	let map = L.map('map').setView([START_COORDINATES['lat'],START_COORDINATES['long'] ], START_ZOOM);
@@ -28,6 +23,7 @@ function init(){
 function loadNeighbourhoods(map){
 
 	// Fetch?
+
 	console.log(provinces)
 	L.geoJSON(provinces)
 }
@@ -39,4 +35,4 @@ function getSelectedNeighbourhoods(){
 
 let map = init()
 
-loadNeighbourhoods(map)
+// loadNeighbourhoods(map)

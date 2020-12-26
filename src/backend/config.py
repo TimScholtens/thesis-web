@@ -2,7 +2,7 @@ from pathlib import Path
 from flask import Flask
 
 STATIC_URL_PATH = ''  # Removes 'static' from URL
-STATIC_FOLDER_FRONTEND = '../../dist/'
+STATIC_FOLDER_FRONTEND = './dist/'
 STATIC_FOLDER_API = Path.cwd()
 
 
