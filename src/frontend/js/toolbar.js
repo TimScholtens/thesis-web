@@ -1,5 +1,11 @@
 import {HOST} from "./config";
 
+
+function init() {
+    getVariables()
+}
+
+
 function getVariables() {
     fetch(`${HOST}/api/variables`)
         .then(resp => resp.json())
@@ -29,8 +35,14 @@ function getVariables() {
 
 }
 
-function setUIVariables() {
+function setSelectedProvinces(selectedProvincesVal){
 
+    let selectedProvincesInput = document.getElementById('selected-provinces-input')
+    selectedProvincesInput.value = [...selectedProvincesVal].join(', ')
+    // selectedProvincesInput.value = 'boi'
 }
 
-getVariables()
+
+init()
+
+export {setSelectedProvinces}

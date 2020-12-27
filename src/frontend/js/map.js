@@ -1,6 +1,7 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import {START_COORDINATES, START_ZOOM, MIN_ZOOM, HOST, MOUSECLICK_MAPPING} from './config.js'
+import {setSelectedProvinces} from "./toolbar";
 
 let geojsonLayer = null
 let selectedFeatureSet = new Set()
@@ -10,10 +11,10 @@ function init() {
     // Initialize map
     let map = L.map('map').setView([START_COORDINATES['lat'], START_COORDINATES['long']], START_ZOOM);
 
-    // TODO; Prevent ContextMenu
-    // let mapElement = document.getElementById('map')
-    // let mapElement = document.querySelector('body')
-    // mapElement.addEventListener('contextmenu', () => {return false;})
+    let mapElement = document.getElementById('map')
+    mapElement.addEventListener('contextmenu', (e) => {
+        e.preventDefault()
+    })
 
     // Add tile layer
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -70,13 +71,20 @@ function onEachFeature(feature, layer) {
     }
 
     const deHighlightFeature = (e) => {
-        let l = e.target;
-        l.setStyle(({
-            // weight: 5,
-            color: '#163e4c',
-            // dashArray: '',
-            // fillOpacity: 0.7
-        }))
+        geojsonLayer.resetStyle()
+    }
+
+    const updateSelectedFeatures = (new_val) => {
+
+        // Update state
+        selectedFeatureSet = new_val
+
+        // Logging
+        console.log(`Currently selected features :`, selectedFeatureSet)
+
+        // Update toolbar UI
+        setSelectedProvinces(selectedFeatureSet)
+
     }
 
     layer.on({
@@ -93,24 +101,22 @@ function onEachFeature(feature, layer) {
             let clickedFeature = e.target.feature.properties.name
 
             if (mouseClickValue === MOUSECLICK_MAPPING['left']) {
-                highlightFeature(e)
-                selectedFeatureSet.add(clickedFeature)
 
-                console.log(`Currently selected features ${selectedFeatureSet}`)
+                let new_set_state = new Set(selectedFeatureSet)
+                new_set_state.add(clickedFeature)
+                highlightFeature(e)
+                updateSelectedFeatures(new_set_state)
+
                 return;
             }
 
             if (mouseClickValue === MOUSECLICK_MAPPING['right']) {
 
                 deHighlightFeature(e)
-                selectedFeatureSet.delete(clickedFeature)
-
-                console.log(`Currently selected features ${selectedFeatureSet}`)
+                updateSelectedFeatures(new Set())
             }
 
 
-            // onEachFeature(e)
-            // console.log(e.target.feature)
         }
 
     });
