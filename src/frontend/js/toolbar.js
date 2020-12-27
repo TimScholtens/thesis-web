@@ -15,8 +15,8 @@ function getVariables() {
 
                     input.type = 'checkbox'
                     input.classList.add('filled-in')
-                    input.checked = 'checked'
-                    span.innerText = 'filled in'
+                    input.checked = false
+                    span.innerText = val
 
                     label.appendChild(input)
                     label.appendChild(span)
