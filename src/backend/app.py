@@ -3,6 +3,7 @@ from flask import send_file, jsonify
 from controller.geojson import get_provinces
 from controller.variables import get_variables
 
+
 @app.route('/')
 def home():
     return send_file(f'{app.static_folder}/index.html')
