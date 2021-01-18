@@ -4,17 +4,18 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node_modules/.bin/parcel index.html",
-    "prod": "node_modules/.bin/parcel build index.html --out-dir ../backend/dist"
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "leaflet": "^1.7.1",
-    "materialize-css": "^1.0.0-rc.2",
-    "parcel": "^1.12.4"
+    "materialize-css": "^1.0.0-rc.2"
   },
   "devDependencies": {
-    "sass": "^1.30.0"
+    "sass": "^1.30.0",
+    "webpack": "^5.15.0",
+    "webpack-merge": "^5.7.3"
   }
 }
