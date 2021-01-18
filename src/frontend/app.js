@@ -1,7 +1,5 @@
-// import '../css/style.scss'
-// import './map.js'
-// import './toolbar.js'
-// import 'materialize-css';
+import './static/css/style.scss'
+import './static/js/map.js'
+import './static/js/toolbar.js'
 // import 'materialize-css/dist/css/materialize.min.css';
 
-console.log('boiii')

@@ -12,8 +12,24 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             hash: true,
-            filename: './index.html' ,
+            filename: './index.html',
             template: "./static/html/index.html"
         })
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.(scss|css)$/,
+                use: ["style-loader", "css-loader", "sass-loader"],
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
+            },
+        ]
+    }
 };
