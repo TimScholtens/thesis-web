@@ -18,6 +18,3 @@ db = create_engine('postgres://tim:doyouopm@localhost:5432/opm',
                    executemany_mode='values',
                    executemany_values_page_size=10000,
                    client_encoding='utf8')
-
-
-
