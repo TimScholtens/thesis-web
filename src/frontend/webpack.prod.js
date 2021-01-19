@@ -1,3 +1,4 @@
+const path = require('path');
 const {merge} = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -11,12 +12,17 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-        new MiniCssExtractPlugin({filename: "[name].[contentHash].css"}),
-        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({filename: "[name].css"}),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             hash: true,
             filename: './index.html',
-            template: "./static/html/index.html"
+            template: "./static/html/index.html",
+            minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                removeComments: true
+            }
         })
     ],
     module: {
@@ -28,7 +34,13 @@ module.exports = merge(common, {
                     "css-loader", //2. Turns css into commonjs
                     "sass-loader" //1. Turns sass into css
                 ]
-            }
+            },
+             {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+
+
         ]
     }
 });
