@@ -1,30 +1,22 @@
 from config import app, STATIC_FOLDER_API
-from flask import send_file, jsonify
-from controller.geojson import get_provinces
-from controller.variables import get_variables
+from flask_swagger_ui import get_swaggerui_blueprint
+import routes.variables as variable_api
+
+# region swagger specific
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Seans-Python-Flask-REST-Boilerplate"
+    }
+)
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+# endregion
 
 
-@app.route('/')
-def home():
-    return send_file(f'{app.static_folder}/index.html')
-
-
-@app.route('/api/variables')
-def variables():
-    resp = jsonify(variables=get_variables())
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-
-    return resp
-
-
-@app.route('/api/geojson/provinces')
-def provinces():
-    list_provinces = get_provinces()
-    resp = jsonify(list_provinces)
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-
-    return resp
-
+app.register_blueprint(variable_api.get_blueprint())
 
 if __name__ == '__main__':
     app.run(debug=True)
