@@ -7,10 +7,9 @@ DEBUG = 1
 
 # Flask
 STATIC_URL_PATH = ''  # Removes 'static' from URL
-STATIC_FOLDER_FRONTEND = './dist/'
-STATIC_FOLDER_API = Path.cwd()
+STATIC_FOLDER_RESOURCES = Path.cwd() / 'static'
 
-app = Flask(__name__, static_url_path=STATIC_URL_PATH, static_folder=STATIC_FOLDER_FRONTEND)
+app = Flask(__name__, static_url_path=STATIC_URL_PATH)
 
 # SQLAlchemy
 db = create_engine('postgres://tim:doyouopm@localhost:5432/opm',
