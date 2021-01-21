@@ -11,6 +11,7 @@ flask = "*"
 sqlalchemy = "*"
 psycopg2-binary = "*"
 flask-swagger-ui = "*"
+marshmallow = "*"
 
 [requires]
 python_version = "3.8"

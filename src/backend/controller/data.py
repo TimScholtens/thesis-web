@@ -22,9 +22,9 @@ def get_variables():
     ]
 
 
-def get_provinces_data(provinces, year, bioclim):
+def get_neighbourhoods_data(provinces, year, bioclim):
     # Query database
     # plain query
-    data =
-
+    # data =
+    pass
     # Deserialize

@@ -1,6 +1,6 @@
 from flask import jsonify, send_file, request
-from controller.data import get_variables, get_provinces_data
-from controller.geojson import get_provinces
+from controller.data import get_variables, get_neighbourhoods_data
+from controller.geojson import get_neighbourhoods
 from config import app, STATIC_FOLDER_RESOURCES
 
 
@@ -17,10 +17,10 @@ def variables():
     return resp
 
 
-@app.route('/api/geojson/provinces', methods=['GET'])
-def provinces_list():
-    list_provinces = get_provinces()
-    resp = jsonify(list_provinces)
+@app.route('/api/geojson/neighbourhood', methods=['GET'])
+def neighbourhood_list():
+    list_neighbourhoods = get_neighbourhoods()
+    resp = jsonify(list_neighbourhoods)
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
@@ -32,7 +32,7 @@ def provinces_data():
     selected_years = request.form['years']
     selected_bioclims = request.form['bioclims']
 
-    resp = jsonify(get_provinces_data(provinces=selected_provinces, year=selected_years, bioclim=selected_bioclims))
+    resp = jsonify(get_neighbourhoods_data(provinces=selected_provinces, year=selected_years, bioclim=selected_bioclims))
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
