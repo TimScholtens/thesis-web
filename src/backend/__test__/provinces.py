@@ -4,7 +4,7 @@ from __test__.config import HOST
 import json
 
 
-class TestBIOCLIM(unittest.TestCase):
+class TestProvince(unittest.TestCase):
 
     def test_province_names(self):
         """

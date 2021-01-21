@@ -23,13 +23,3 @@ db = create_engine('postgres://tim:doyouopm@localhost:5432/opm',
 base = declarative_base(db)
 Session = sessionmaker(db)
 
-from models.neighbourhood import NeighbourhoodBioclim, NeighbourhoodBioclimSchema
-
-
-ses = Session().query(NeighbourhoodBioclim.name).all()
-schema = NeighbourhoodBioclimSchema()
-#
-print(schema.dump(ses, many=True))
-
-# with Session() as session:
-#     session.query(NeighbourhoodBioclim).all()

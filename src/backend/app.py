@@ -18,7 +18,7 @@ def variables():
 
 
 @app.route('/api/geojson/neighbourhood', methods=['GET'])
-def neighbourhood_list():
+def neighbourhoods_list():
     list_neighbourhoods = get_neighbourhoods()
     resp = jsonify(list_neighbourhoods)
     resp.headers['Access-Control-Allow-Origin'] = '*'
@@ -26,13 +26,19 @@ def neighbourhood_list():
     return resp
 
 
-@app.route('/api/geojson/provinces', methods=['POST'])
-def provinces_data():
-    selected_provinces = request.form['provinces']
-    selected_years = request.form['years']
-    selected_bioclims = request.form['bioclims']
+@app.route('/api/variables/neighbourhood', methods=['POST'])
+def neighbourhoods_data():
+    selected_neighbourhoods = list(request.form.getlist('neighbourhoods'))
+    selected_years = list(request.form.getlist('years'))
+    selected_bioclims = list(request.form.getlist('bioclims'))
 
-    resp = jsonify(get_neighbourhoods_data(provinces=selected_provinces, year=selected_years, bioclim=selected_bioclims))
+    print('boi?')
+
+    resp = jsonify(get_neighbourhoods_data(
+        neighbourhoods=selected_neighbourhoods,
+        years=selected_years,
+        bioclims=selected_bioclims
+    ))
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp

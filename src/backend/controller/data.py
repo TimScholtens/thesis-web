@@ -1,3 +1,6 @@
+from config import Session
+from models.neighbourhood import NeighbourhoodBioclim, NeighbourhoodBioclimSchema
+
 def get_variables():
     return [
         'BIO 1 - Annual Mean Temperature',
@@ -22,9 +25,24 @@ def get_variables():
     ]
 
 
-def get_neighbourhoods_data(provinces, year, bioclim):
+def get_neighbourhoods_data(neighbourhoods, years, bioclims):
+
+    print(NeighbourhoodBioclim.__table__.columns)
+
+    mapped_columns = [getattr(NeighbourhoodBioclim,bioclim) for bioclim in bioclims]
+
     # Query database
-    # plain query
-    # data =
-    pass
-    # Deserialize
+    query = Session().query(
+        mapped_columns,
+    ).filter(NeighbourhoodBioclim.year.in_(years))
+
+    # Serialize
+    schema = NeighbourhoodBioclimSchema()
+
+
+    print(schema.dump(query, many=True))
+
+
+
+
+
