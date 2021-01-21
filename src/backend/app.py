@@ -36,6 +36,8 @@ def provinces_data():
     selected_years = request.form['years']
     selected_bioclims = request.form['bioclims']
 
+    print(selected_years,selected_provinces,selected_bioclims)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
