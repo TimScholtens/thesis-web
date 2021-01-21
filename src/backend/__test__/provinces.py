@@ -10,7 +10,8 @@ class TestBIOCLIM(unittest.TestCase):
         """
             Check whether the API returns all 12 provice names
         """
-        req = requests.get(f'http://{HOST}/api/geojson/provinces')
+        uri = f'http://{HOST}/api/geojson/provinces'
+        req = requests.get(uri)
         resp = json.loads(req.json())
 
         province_names = [feature['properties']['name'] for feature in resp['features']]
@@ -21,7 +22,9 @@ class TestBIOCLIM(unittest.TestCase):
         """
             Check API returns data for 1 province
         """
-        req = requests.post(f'http://{HOST}/api/geojson/provinces')
+        uri = f'http://{HOST}/api/geojson/provinces'
+        data = dict(provinces='boi', years=1, bioclims=1)
+        req = requests.post(uri, data)
         
 
 if __name__ == '__main__':

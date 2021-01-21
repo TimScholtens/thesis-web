@@ -20,3 +20,11 @@ def get_variables():
         'BIO 18 - Precipitation of Warmest Quarter',
         'BIO 19 - Precipitation of Coldest Quarter'
     ]
+
+
+def get_provinces_data(provinces, year, bioclim):
+    # Query database
+    # plain query
+    data =
+
+    # Deserialize
