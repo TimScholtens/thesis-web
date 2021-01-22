@@ -27,6 +27,5 @@ class TestProvince(unittest.TestCase):
         req = requests.post(uri, data)
 
 
-
 if __name__ == '__main__':
     unittest.main()

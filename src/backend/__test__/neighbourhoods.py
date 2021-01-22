@@ -20,8 +20,8 @@ class TestNeighbourhood(unittest.TestCase):
             'bio19_rain_sum_coldest_quarter'
         ])
         req = requests.post(uri, data)
-
         print(req.json())
+        self.assertEqual(1, len(req.json()))
 
 
 if __name__ == '__main__':
