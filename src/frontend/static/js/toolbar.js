@@ -1,8 +1,12 @@
 import {HOST} from "./config";
-
+import {selectedFeatureSet} from "./map";
 
 function init() {
     getVariables()
+
+    //    Add eventlisters
+    let download_button = document.getElementById('download-button')
+    download_button.addEventListener("click", getSelectedNeighbourhoods )
 }
 
 
@@ -21,7 +25,7 @@ function getVariables() {
 
                     input.type = 'checkbox'
                     input.classList.add('filled-in')
-                    input.checked = false
+                    input.checked = true
                     span.innerText = val
 
                     label.appendChild(input)
@@ -39,7 +43,21 @@ function setSelectedProvinces(selectedProvincesVal){
 
     let selectedProvincesInput = document.getElementById('selected-provinces-input')
     selectedProvincesInput.value = [...selectedProvincesVal].join(', ')
-    // selectedProvincesInput.value = 'boi'
+}
+
+
+
+function getSelectedNeighbourhoods(){
+    console.log(selectedFeatureSet)
+}
+
+function downloadSelectedVariables(){
+    let selectedNeighbourhoods = getSelectedNeighbourhoods()
+    let selectedVariables = null
+    let selectedYears = null
+
+
+
 }
 
 

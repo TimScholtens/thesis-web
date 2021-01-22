@@ -49,7 +49,7 @@ function loadNeighbourhoods(map) {
 /* Set of function for the hover over the geojson layer */
 function setStyle(feature) {
     return {
-        weight: 0.1,
+        weight: 0.8,
         opacity: 0.5,
         color: 'black',
         // dashArray: '2',
@@ -64,8 +64,8 @@ function onEachFeature(feature, layer) {
         let l = e.target;
         l.setStyle(({
             weight: 5,
-            color: '#666',
-            dashArray: '',
+            fillColor: '#fda000',
+            dashArray: '2',
             fillOpacity: 0.7
         }))
     }
@@ -127,3 +127,5 @@ function onEachFeature(feature, layer) {
 let map = init()
 
 loadNeighbourhoods(map)
+
+export {selectedFeatureSet}
