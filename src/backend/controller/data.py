@@ -32,14 +32,14 @@ def get_variables():
 
 
 def get_neighbourhoods_data(neighbourhoods, years, bioclims):
-    print(NeighbourhoodBioclim.__table__.columns)
+
+    # print(NeighbourhoodBioclim.__table__.columns) # show column names
 
     mapped_columns = [getattr(NeighbourhoodBioclim, bioclim) for bioclim in bioclims]
 
-    # print(mapped_columns)
-    # print(type(NeighbourhoodBioclim.name))
     # Query database
-    query_results = Session().query(*mapped_columns).all()
+    # query_results = Session().query(*mapped_columns).all()
+    query_results = Session().query(*mapped_columns).filter(NeighbourhoodBioclim.year.in_([2016])).all()
 
     # .filter(NeighbourhoodBioclim.year.in_(years))
 
