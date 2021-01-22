@@ -25,7 +25,8 @@ class TestProvince(unittest.TestCase):
         uri = f'http://{HOST}/api/geojson/provinces'
         data = dict(provinces='boi', years=1, bioclims=1)
         req = requests.post(uri, data)
-        
+
+
 
 if __name__ == '__main__':
     unittest.main()
