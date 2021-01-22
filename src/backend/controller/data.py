@@ -4,7 +4,8 @@ from flask import jsonify
 
 
 def get_variables():
-    return NeighbourhoodBioclim.__table__.columns
+    column_names = [col.name for col in NeighbourhoodBioclim.__table__.columns if str(col.name).startswith('bio')]
+    return column_names
 
     #
     #

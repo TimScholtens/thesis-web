@@ -33,7 +33,7 @@ function init() {
 
 function loadNeighbourhoods(map) {
 
-    fetch(`${HOST}/api/geojson/provinces`)
+    fetch(`${HOST}/api/geojson/neighbourhood`)
         .then(resp => resp.json())
         .then(data => JSON.parse(data))
         .then(json => {
