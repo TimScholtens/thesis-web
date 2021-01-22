@@ -11,7 +11,7 @@ class TestNeighbourhood(unittest.TestCase):
             Check API returns data for 1 neighbourhood
         """
         uri = f'http://{HOST}/api/variables/neighbourhood'
-        data = dict(neighbourhoods=['boi'], years=[2016], bioclims=[
+        data = dict(neighbourhoods_code=['WK000300'], years=[2016], bioclims=[
             'code', 'name', 'township', 'year', 'bio1_temperature_avg_year', 'bio2_temperature_range_avg_year', 'bio3_isothermality',
             'bio4_temperature_std_year', 'bio5_temperature_max_year', 'bio6_temperature_min_year', 'bio7_temperature_range_max_year',
             'bio8_temperature_avg_wettest_quarter', 'bio9_temperature_avg_driest_quarter', 'bio10_temperature_avg_warmest_quarter',

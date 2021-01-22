@@ -28,7 +28,7 @@ def neighbourhoods_list():
 
 @app.route('/api/variables/neighbourhood', methods=['POST'])
 def neighbourhoods_data():
-    selected_neighbourhoods = request.form.getlist('neighbourhoods')
+    selected_neighbourhoods_code = request.form.getlist('neighbourhoods_code')
     selected_years = request.form.getlist('years')
     selected_bioclims = request.form.getlist('bioclims')
 
@@ -36,7 +36,7 @@ def neighbourhoods_data():
     # print(type(selected_bioclims), type(selected_years), type(selected_neighbourhoods))
 
     resp = jsonify(get_neighbourhoods_data(
-        neighbourhoods=selected_neighbourhoods,
+        neighbourhoods_code=selected_neighbourhoods_code,
         years=selected_years,
         bioclims=selected_bioclims
     ))
