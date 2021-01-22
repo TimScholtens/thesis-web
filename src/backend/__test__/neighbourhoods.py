@@ -14,6 +14,8 @@ class TestNeighbourhood(unittest.TestCase):
         data = dict(neighbourhoods=['boi'], years=[1], bioclims=['bio1_temperature_avg_year'])
         req = requests.post(uri, data)
 
+        print(req.text)
+
 
 if __name__ == '__main__':
     unittest.main()

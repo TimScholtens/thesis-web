@@ -1,5 +1,7 @@
 from config import Session
 from models.neighbourhood import NeighbourhoodBioclim, NeighbourhoodBioclimSchema
+from flask import jsonify
+
 
 def get_variables():
     return [
@@ -26,23 +28,16 @@ def get_variables():
 
 
 def get_neighbourhoods_data(neighbourhoods, years, bioclims):
+    # print(NeighbourhoodBioclim.__table__.columns)
 
-    print(NeighbourhoodBioclim.__table__.columns)
+    mapped_columns = [getattr(NeighbourhoodBioclim, bioclim) for bioclim in bioclims]
 
-    mapped_columns = [getattr(NeighbourhoodBioclim,bioclim) for bioclim in bioclims]
-
+    # print(mapped_columns)
+    # print(type(NeighbourhoodBioclim.name))
     # Query database
-    query = Session().query(
-        mapped_columns,
-    ).filter(NeighbourhoodBioclim.year.in_(years))
+    query = Session().query(*mapped_columns).all()
+    # .filter(NeighbourhoodBioclim.year.in_(years))
 
-    # Serialize
-    schema = NeighbourhoodBioclimSchema()
-
-
-    print(schema.dump(query, many=True))
-
-
-
-
-
+    return query
+    # print(query)
+    # print(jsonify(query))
