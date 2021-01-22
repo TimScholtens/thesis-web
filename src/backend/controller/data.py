@@ -39,7 +39,7 @@ def get_neighbourhoods_data(neighbourhoods, years, bioclims):
 
     # Query database
     # query_results = Session().query(*mapped_columns).all()
-    query_results = Session().query(*mapped_columns).filter(NeighbourhoodBioclim.year.in_([2016])).all()
+    query_results = Session().query(*mapped_columns).filter(NeighbourhoodBioclim.year.in_(years)).all()
 
     # .filter(NeighbourhoodBioclim.year.in_(years))
 
