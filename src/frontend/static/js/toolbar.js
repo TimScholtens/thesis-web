@@ -4,7 +4,7 @@ import {selectedFeatureSet} from "./map";
 function init() {
     getVariables()
 
-    //    Add eventlisters
+    //    Add eventlisteners
     let download_button = document.getElementById('download-button')
     download_button.addEventListener("click", getSelectedNeighbourhoods )
 }
@@ -36,6 +36,28 @@ function getVariables() {
                 })
             }
         )
+
+}
+
+
+function getSelectedVariables(){
+   let variables_holder = document.getElementById('variables')
+
+    let labels = variables_holder.getElementsByTagName('label')
+    let selected_labels = labels.getElementsByTagName('label')
+
+    console.log(selected_labels)
+
+    // Works
+    // $0.checked = false
+    // false
+    // $$('input').forEach(i => i.checked=false)
+    // undefined
+
+    let inputs = document.querySelectorAll('input')
+    inputs.filter(input => input.checked=true)
+
+    console.log(inputs)
 
 }
 
