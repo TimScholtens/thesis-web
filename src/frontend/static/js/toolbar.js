@@ -6,7 +6,7 @@ function init() {
 
     //    Add eventlisteners
     let download_button = document.getElementById('download-button')
-    download_button.addEventListener("click", getSelectedNeighbourhoods )
+    download_button.addEventListener("click", downloadSelectedVariables)
 }
 
 
@@ -40,45 +40,48 @@ function getVariables() {
 }
 
 
-function getSelectedVariables(){
-   let variables_holder = document.getElementById('variables')
+function getSelectedVariables() {
 
-    let labels = variables_holder.getElementsByTagName('label')
-    let selected_labels = labels.getElementsByTagName('label')
+    let checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
+    let checked_checkboxes = checkboxes.filter(c => c.checked === true)
+    let checked_labels = checked_checkboxes.map(c => c.parentNode)
+    let checked_labels_text = checked_labels.map(c => c.querySelector('span').innerText)
 
-    console.log(selected_labels)
-
-    // Works
-    // $0.checked = false
-    // false
-    // $$('input').forEach(i => i.checked=false)
-    // undefined
-
-    let inputs = document.querySelectorAll('input')
-    inputs.filter(input => input.checked=true)
-
-    console.log(inputs)
-
+    console.log(checked_labels_text)
+    return checked_labels_text
 }
 
-function setSelectedProvinces(selectedProvincesVal){
+function setSelectedProvinces(selectedProvincesVal) {
 
     let selectedProvincesInput = document.getElementById('selected-provinces-input')
     selectedProvincesInput.value = [...selectedProvincesVal].join(', ')
 }
 
 
-
-function getSelectedNeighbourhoods(){
+function getSelectedNeighbourhoods() {
     console.log(selectedFeatureSet)
 }
 
-function downloadSelectedVariables(){
+function getSelectedYears() {
+    /*
+        Returns array of values between start year and end year
+    */
+    let year_slider = document.getElementById('year-slider')
+    let selected_min_max_year = year_slider.noUiSlider.get()
+
+    let range_min_max_year = []
+    for (let i = selected_min_max_year[0]; i <= selected_min_max_year[1]; i++) {
+        range_min_max_year.push(i);
+    }
+    console.log(range_min_max_year)
+
+    return range_min_max_year
+}
+
+function downloadSelectedVariables() {
     let selectedNeighbourhoods = getSelectedNeighbourhoods()
-    let selectedVariables = null
-    let selectedYears = null
-
-
+    let selectedVariables = getSelectedVariables()
+    let selectedYears = getSelectedYears()
 
 }
 

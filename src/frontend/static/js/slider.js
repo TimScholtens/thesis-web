@@ -7,6 +7,7 @@ let slider = document.getElementById('year-slider');
 noUiSlider.create(slider, {
     start: [2000, 2020],
     connect: true,
+    tooltips: true,
     step: 1,
     orientation: 'horizontal', // 'horizontal' or 'vertical'
     range: {
