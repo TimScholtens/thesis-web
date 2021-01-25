@@ -90,6 +90,8 @@ function downloadSelectedVariables() {
     // https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/
 
     // Flask send_file
+    // https://stackoverflow.com/questions/24577349/flask-download-a-file
+
     // fetch()
 }
 
