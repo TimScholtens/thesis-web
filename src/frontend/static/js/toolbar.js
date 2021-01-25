@@ -71,7 +71,7 @@ function getSelectedYears() {
 
     let range_min_max_year = []
     for (let i = selected_min_max_year[0]; i <= selected_min_max_year[1]; i++) {
-        range_min_max_year.push(i);
+        range_min_max_year.push(parseInt(i,10));
     }
     console.log(range_min_max_year)
 
@@ -79,10 +79,18 @@ function getSelectedYears() {
 }
 
 function downloadSelectedVariables() {
+
+    // Retrieve user settings
     let selectedNeighbourhoods = getSelectedNeighbourhoods()
     let selectedVariables = getSelectedVariables()
     let selectedYears = getSelectedYears()
 
+    // Send HTTP post request to server
+    // let headers =
+    // https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/
+
+    // Flask send_file
+    // fetch()
 }
 
 

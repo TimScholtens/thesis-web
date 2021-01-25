@@ -25,8 +25,8 @@ body {
   width: 33.3%;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  //align-items: center;
+  //justify-content: center;
 
   .content {
     width: 100%;
@@ -41,4 +41,16 @@ body {
     align-items: first;
     flex-direction: column;
   }
+
+  .download{
+    margin-top:45px
+  }
+}
+
+button{
+  padding:10px 20px;
+  border: 0;
+  color:white;
+  background-color: #00A896;
+  //width: 100px;
 }
