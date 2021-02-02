@@ -47,8 +47,12 @@ function getSelectedVariables() {
     let checked_labels = checked_checkboxes.map(c => c.parentNode)
     let checked_labels_text = checked_labels.map(c => c.querySelector('span').innerText)
 
-    console.log(checked_labels_text)
-    return checked_labels_text
+    // console.log(checked_labels_text)
+    // console.log(typeof (checked_labels_text))
+
+    console.log(Object.values(checked_labels_text))
+    // Transform object to array
+    return Object.values(checked_labels_text)
 }
 
 function setSelectedProvinces(selectedProvincesVal) {
@@ -59,7 +63,7 @@ function setSelectedProvinces(selectedProvincesVal) {
 
 
 function getSelectedNeighbourhoods() {
-    console.log(selectedFeatureSet)
+    return selectedFeatureSet
 }
 
 function getSelectedYears() {
@@ -71,7 +75,7 @@ function getSelectedYears() {
 
     let range_min_max_year = []
     for (let i = selected_min_max_year[0]; i <= selected_min_max_year[1]; i++) {
-        range_min_max_year.push(parseInt(i,10));
+        range_min_max_year.push(parseInt(i, 10));
     }
     console.log(range_min_max_year)
 
@@ -85,9 +89,27 @@ function downloadSelectedVariables() {
     let selectedVariables = getSelectedVariables()
     let selectedYears = getSelectedYears()
 
+    // Set form data
+    let formData = new FormData()
+    formData.append('years', selectedYears)
+    formData.append('bioclims', selectedVariables)
+    formData.append('neighbourhoods_code', selectedNeighbourhoods)
+
     // Send HTTP post request to server
     // let headers =
     // https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/
+    fetch(`${HOST}/api/variables/neighbourhood`,
+        {
+            method: 'POST',
+            headers:{
+                'Content-type': 'application/x-www-form-urlencoded'
+            },
+            body:
+
+            '' +
+                ''                'years=[2018]'
+            """
+        }).catch(err => console.log(err))
 
     // Flask send_file
     // https://stackoverflow.com/questions/24577349/flask-download-a-file

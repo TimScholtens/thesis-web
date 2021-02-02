@@ -21,4 +21,6 @@ def get_neighbourhoods_data(neighbourhoods_code, years, bioclims):
         .all()
 
     query_result_dict = [result._asdict() for result in query_results]
+
+    print(query_result_dict)
     return query_result_dict

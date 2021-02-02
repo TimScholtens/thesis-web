@@ -4,8 +4,7 @@ from __test__.config import HOST
 import json
 
 
-class TestNeighbourhood(unittest.TestCase):
-
+class TestData(unittest.TestCase):
     def test_neighbourhood_post(self):
         """
             Check API returns data for 1 neighbourhood
@@ -19,7 +18,7 @@ class TestNeighbourhood(unittest.TestCase):
             'bio15_rain_std', 'bio16_rain_sum_wettest_quarter', 'bio17_rain_sum_driest_quarter', 'bio18_rain_sum_warmest_quarter',
             'bio19_rain_sum_coldest_quarter'
         ])
-        req = requests.post(uri, data)
+        req = requests.post(uri, json=data)
         print(req.json())
         self.assertEqual(1, len(req.json()))
 

@@ -28,12 +28,14 @@ def neighbourhoods_list():
 
 @app.route('/api/variables/neighbourhood', methods=['POST'])
 def neighbourhoods_data():
-    selected_neighbourhoods_code = request.form.getlist('neighbourhoods_code')
-    selected_years = request.form.getlist('years')
-    selected_bioclims = request.form.getlist('bioclims')
 
-    # print(selected_bioclims, selected_years, selected_neighbourhoods)
-    # print(type(selected_bioclims), type(selected_years), type(selected_neighbourhoods))
+    req = request.get_json()
+    selected_neighbourhoods_code = req['neighbourhoods_code']
+    selected_years = req['years']
+    selected_bioclims = req['bioclims']
+
+    # print(selected_bioclims, selected_years, selected_neighbourhoods_code)
+    # print(type(selected_bioclims), type(selected_years), type(selected_neighbourhoods_code))
 
     resp = jsonify(get_neighbourhoods_data(
         neighbourhoods_code=selected_neighbourhoods_code,
@@ -41,6 +43,7 @@ def neighbourhoods_data():
         bioclims=selected_bioclims
     ))
     resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers["Content-Disposition"] = "attachment; filename=BIOCLIM.json"
 
     return resp
 
