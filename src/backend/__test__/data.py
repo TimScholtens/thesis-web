@@ -1,6 +1,7 @@
 import unittest
 import requests
 from __test__.config import HOST
+import curlify
 import json
 
 
@@ -18,9 +19,12 @@ class TestData(unittest.TestCase):
             'bio15_rain_std', 'bio16_rain_sum_wettest_quarter', 'bio17_rain_sum_driest_quarter', 'bio18_rain_sum_warmest_quarter',
             'bio19_rain_sum_coldest_quarter'
         ])
-        req = requests.post(uri, json=data)
-        print(req.json())
-        self.assertEqual(1, len(req.json()))
+        resp = requests.post(uri, json=data)
+        # print(resp.request.body)
+        # print(resp.request.headers)
+        print(curlify.to_curl(resp.request))
+        # print(resp.json())
+        self.assertEqual(1, len(resp.json()))
 
 
 if __name__ == '__main__':

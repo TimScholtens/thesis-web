@@ -96,25 +96,23 @@ function downloadSelectedVariables() {
     formData.append('neighbourhoods_code', selectedNeighbourhoods)
 
     // Send HTTP post request to server
-    // let headers =
     // https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/
     fetch(`${HOST}/api/variables/neighbourhood`,
         {
             method: 'POST',
-            headers:{
-                'Content-type': 'application/x-www-form-urlencoded'
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body:
+            body: '{"neighbourhoods_code": ["WK000300"], "years": [2016], "bioclims": ["code", "name", "township", "year", "bio1_temperature_avg_year", "bio2_temperature_range_avg_year", "bio3_isothermality", "bio4_temperature_std_year", "bio5_temperature_max_year", "bio6_temperature_min_year", "bio7_temperature_range_max_year", "bio8_temperature_avg_wettest_quarter", "bio9_temperature_avg_driest_quarter", "bio10_temperature_avg_warmest_quarter", "bio11_temperature_avg_coldest_quarter", "bio12_rain_sum_year", "bio13_rain_sum_wettest_month", "bio14_rain_sum_driest_month", "bio15_rain_std", "bio16_rain_sum_wettest_quarter", "bio17_rain_sum_driest_quarter", "bio18_rain_sum_warmest_quarter", "bio19_rain_sum_coldest_quarter"]}'
+        }
+    )
+        .then(x => console.log(x))
+        .catch(err => console.log(err))
 
-            '' +
-                ''                'years=[2018]'
-            """
-        }).catch(err => console.log(err))
+// Flask send_file
+// https://stackoverflow.com/questions/24577349/flask-download-a-file
 
-    // Flask send_file
-    // https://stackoverflow.com/questions/24577349/flask-download-a-file
-
-    // fetch()
+// fetch()
 }
 
 

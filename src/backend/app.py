@@ -43,7 +43,7 @@ def neighbourhoods_data():
         bioclims=selected_bioclims
     ))
     resp.headers['Access-Control-Allow-Origin'] = '*'
-    resp.headers["Content-Disposition"] = "attachment; filename=BIOCLIM.json"
+    # resp.headers["Content-Disposition"] = "attachment; filename=BIOCLIM.json"
 
     return resp
 

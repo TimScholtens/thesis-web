@@ -12,6 +12,7 @@ sqlalchemy = "*"
 psycopg2-binary = "*"
 flask-swagger-ui = "*"
 marshmallow = "*"
+curlify = "*"
 
 [requires]
 python_version = "3.8"
