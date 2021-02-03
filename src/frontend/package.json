@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "file-saver": "^2.0.5",
     "leaflet": "^1.7.1",
     "materialize-css": "^1.0.0-rc.2",
     "nouislider": "^14.6.3",

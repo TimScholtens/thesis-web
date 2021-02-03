@@ -1,4 +1,4 @@
-from flask import jsonify, send_file, request
+from flask import jsonify, send_file, request, Response
 from controller.data import get_variables, get_neighbourhoods_data
 from controller.geojson import get_neighbourhoods
 from config import app, STATIC_FOLDER_RESOURCES
@@ -26,26 +26,33 @@ def neighbourhoods_list():
     return resp
 
 
-@app.route('/api/variables/neighbourhood', methods=['POST'])
+@app.route('/api/variables/neighbourhood', methods=['POST', 'OPTIONS'])
 def neighbourhoods_data():
+    if request.method == 'OPTIONS':
+        resp = Response("")
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return resp
 
-    req = request.get_json()
-    selected_neighbourhoods_code = req['neighbourhoods_code']
-    selected_years = req['years']
-    selected_bioclims = req['bioclims']
+    if request.method == 'POST':
+        req = request.get_json()
+        selected_neighbourhoods_code = req['neighbourhoods_code']
+        selected_years = req['years']
+        selected_bioclims = req['bioclims']
 
     # print(selected_bioclims, selected_years, selected_neighbourhoods_code)
     # print(type(selected_bioclims), type(selected_years), type(selected_neighbourhoods_code))
 
-    resp = jsonify(get_neighbourhoods_data(
-        neighbourhoods_code=selected_neighbourhoods_code,
-        years=selected_years,
-        bioclims=selected_bioclims
-    ))
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    # resp.headers["Content-Disposition"] = "attachment; filename=BIOCLIM.json"
+        neighbourhoods_data_query_result = get_neighbourhoods_data(
+            neighbourhoods_code=selected_neighbourhoods_code,
+            years=selected_years,
+            bioclims=selected_bioclims
+        )
+        resp = jsonify(neighbourhoods_data_query_result)
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers["Content-Disposition"] = "attachment; filename=BIOCLIM.json"
 
-    return resp
+        return resp
 
 
 if __name__ == '__main__':
