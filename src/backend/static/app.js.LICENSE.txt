@@ -8,3 +8,5 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+
+/*! nouislider - 14.6.3 - 11/19/2020 */

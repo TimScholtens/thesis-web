@@ -6,7 +6,7 @@ from config import app, STATIC_FOLDER_RESOURCES
 
 @app.route('/')
 def home():
-    return send_file(f'{STATIC_FOLDER_RESOURCES / "dist" / "index.html"}')
+    return send_file(f'{STATIC_FOLDER_RESOURCES / "index.html"}')
 
 
 @app.route('/api/variables')
