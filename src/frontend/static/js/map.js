@@ -1,7 +1,7 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import {START_COORDINATES, START_ZOOM, MIN_ZOOM, HOST, MOUSECLICK_MAPPING} from './config.js'
-import {setSelectedProvinces} from "./toolbar";
+import {setSelectedNeighbourhoods} from "./toolbar";
 
 let geojsonLayer = null
 let selectedFeatureSet = new Set()
@@ -83,7 +83,7 @@ function onEachFeature(feature, layer) {
         console.log(`Currently selected features :`, selectedFeatureSet)
 
         // Update toolbar UI
-        setSelectedProvinces(selectedFeatureSet)
+        setSelectedNeighbourhoods(selectedFeatureSet)
 
     }
 
@@ -98,12 +98,17 @@ function onEachFeature(feature, layer) {
         mousedown: (e) => {
             // if left click add to selected features list, else remove from list
             let mouseClickValue = e.originalEvent.which
-            let clickedFeature = e.target.feature.properties.name
+            let clickedFeature = e.target.feature.properties
 
             if (mouseClickValue === MOUSECLICK_MAPPING['left']) {
 
                 let new_set_state = new Set(selectedFeatureSet)
-                new_set_state.add(clickedFeature)
+                new_set_state.add(
+                    {
+                        name:clickedFeature.name,
+                        code:clickedFeature.code
+                    }
+                )
                 highlightFeature(e)
                 updateSelectedFeatures(new_set_state)
 
