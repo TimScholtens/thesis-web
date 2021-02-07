@@ -1,7 +1,7 @@
 from flask import jsonify, send_file, request, Response
 from controller.data import get_variables, get_neighbourhoods_data
 from controller.geojson import get_neighbourhoods
-from config import app, STATIC_FOLDER_RESOURCES
+from config import app, STATIC_FOLDER_RESOURCES, PORT
 
 
 @app.route('/')
@@ -56,4 +56,4 @@ def neighbourhoods_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=PORT)
