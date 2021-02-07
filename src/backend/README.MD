@@ -3,7 +3,7 @@
 sudo ln thesis.service /etc/systemd/system/thesis.service 
  
 ## Start service
- sudo service start thesis.service
+ sudo service thesis start
  
  
 # Maintenance
