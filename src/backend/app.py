@@ -40,9 +40,6 @@ def neighbourhoods_data():
         selected_years = req['years']
         selected_bioclims = req['bioclims']
 
-    # print(selected_bioclims, selected_years, selected_neighbourhoods_code)
-    # print(type(selected_bioclims), type(selected_years), type(selected_neighbourhoods_code))
-
         neighbourhoods_data_query_result = get_neighbourhoods_data(
             neighbourhoods_code=selected_neighbourhoods_code,
             years=selected_years,
