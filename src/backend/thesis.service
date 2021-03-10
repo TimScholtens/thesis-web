@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=t_p_h_scholtens
-WorkingDirectory=/var/www/thesis/opm-web/src/backend
+WorkingDirectory=/var/www/bioclim/opm-web/src/backend
 ExecStart=/home/t_p_h_scholtens/.local/share/virtualenvs/backend-39qL6VIL/bin/gunicorn --workers 3 --bind :6000 app:app
 Restart=always
 
