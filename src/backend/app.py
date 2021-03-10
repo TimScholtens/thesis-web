@@ -1,6 +1,6 @@
 from flask import jsonify, send_file, request, Response
 from controller.data import get_variables, get_neighbourhoods_data
-from controller.geojson import get_neighbourhoods
+from controller.geojson import get_neighbourhoods, get_provinces
 from config import app, STATIC_FOLDER_RESOURCES, PORT
 
 
@@ -19,8 +19,17 @@ def variables():
 
 @app.route('/api/geojson/neighbourhood', methods=['GET'])
 def neighbourhoods_list():
-    list_neighbourhoods = get_neighbourhoods()
-    resp = jsonify(list_neighbourhoods)
+    geojson_neighbourhoods = get_neighbourhoods()
+    resp = jsonify(geojson_neighbourhoods)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+
+    return resp
+
+
+@app.route('/api/geojson/provinces', methods=['GET'])
+def provinces_list():
+    geojson_provinces = get_provinces()
+    resp = jsonify(geojson_provinces)
     resp.headers['Access-Control-Allow-Origin'] = '*'
 
     return resp
