@@ -1,6 +1,6 @@
 // API
 // let HOST = 'http://localhost:5000'
-let HOST = 'https://thesis.scholtens.io'
+let HOST = 'https://bioclim.scholtens.io'
 
 
 // Map

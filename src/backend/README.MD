@@ -6,13 +6,13 @@
 > gunzip < dump_2021-02-05_16_32_52.gz | docker exec -i opm-etl_postgis_1  psql -U tim -d opm <br/>
 
 ## Nginx
-sudo ln /etc/nginx/sites-available/thesis.scholtens.io /etc/nginx/sites-enabled/thesis.scholtens.io
+sudo ln /etc/nginx/sites-available/bioclim.scholtens.io /etc/nginx/sites-enabled/bioclim.scholtens.io
 sudo service nginx restart
 ## Service
 ### Add service
-sudo ln thesis.service /etc/systemd/system/thesis.service 
+sudo ln bioclim.service /etc/systemd/system/bioclim.service 
  
 ### Start service
-sudo service thesis start
+sudo service bioclim start
  
  
