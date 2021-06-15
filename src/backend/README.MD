@@ -14,5 +14,3 @@ sudo ln bioclim.service /etc/systemd/system/bioclim.service
  
 ### Start service
 sudo service bioclim start
- 
-check 
