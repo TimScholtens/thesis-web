@@ -8,9 +8,13 @@
 ## Nginx
 sudo ln /etc/nginx/sites-available/bioclim.scholtens.io /etc/nginx/sites-enabled/bioclim.scholtens.io
 sudo service nginx restart
-## Service
+## Debian 
 ### Add service
 sudo ln bioclim.service /etc/systemd/system/bioclim.service 
  
 ### Start service
 sudo service bioclim start
+
+## Azure app service
+gunicorn --bind=0.0.0.0 --timeout 600 --chdir './src/backend/' app:app
+
