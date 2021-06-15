@@ -52,5 +52,5 @@ def neighbourhoods_data():
         return resp
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=PORT)
+# if __name__ == '__main__':
+#     app.run(debug=True, port=PORT)
