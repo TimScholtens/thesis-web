@@ -15,7 +15,7 @@ STATIC_FOLDER_RESOURCES = Path.cwd() / 'static'
 app = Flask(__name__, static_url_path=STATIC_URL_PATH, static_folder=str(STATIC_FOLDER_RESOURCES))
 
 # SQLAlchemy
-db = create_engine('postgres://tim:doyouopm@localhost:5432/opm',
+db = create_engine('postgres://timadmin@datalabopm:doyouopm1!@datalabopm.postgres.database.azure.com:5432/opm',
                    echo=DEBUG,
                    executemany_mode='values',
                    executemany_values_page_size=10000,
@@ -23,4 +23,3 @@ db = create_engine('postgres://tim:doyouopm@localhost:5432/opm',
 
 base = declarative_base(db)
 Session = sessionmaker(db)
-
