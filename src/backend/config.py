@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 # General
 DEBUG = 1
-PORT = 6000
+PORT = 5000
 
 # Flask
 STATIC_URL_PATH = ''  # Removes 'static' from URL
